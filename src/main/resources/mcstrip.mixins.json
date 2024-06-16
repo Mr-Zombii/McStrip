@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "me.zombii.mcstrip.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockMixin",
+    "BlockSettingsMixin",
+    "BlocksMixin",
+    "BootstrapMixin",
+    "ItemsMixin",
+    "LootTablesMixin",
+    "RecipeManagerMixin",
+    "RegistryLoaderMixin",
+    "ServerAdvLoaderMixin",
+    "SimpleRegistryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

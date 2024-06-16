@@ -1,0 +1,5 @@
+accessWidener v2 named
+
+accessible class net/minecraft/registry/RegistryLoader$Loader
+accessible field net/minecraft/registry/RegistryLoader$Loader data Lnet/minecraft/registry/RegistryLoader$Entry;
+accessible field net/minecraft/registry/RegistryLoader$Entry requiredNonEmpty Z

@@ -1,0 +1,43 @@
+{
+	"schemaVersion": 1,
+	"id": "mcstrip",
+	"version": "${version}",
+	"name": "McStrip",
+	"description": "This is a mod that strips minecraft down for computational redstone development",
+	"authors": [
+		"Mr_Zombii",
+		"M4xpizza"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/mcstrip/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.zombii.mcstrip.McStrip"
+		],
+		"client": [
+			"me.zombii.mcstrip.McStripClient"
+		]
+	},
+	"mixins": [
+		"mcstrip.mixins.json",
+		{
+			"config": "mcstrip.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"accessWidener": "mcstrip.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
