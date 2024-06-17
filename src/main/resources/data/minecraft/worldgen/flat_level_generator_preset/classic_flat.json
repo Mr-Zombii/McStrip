@@ -1,0 +1,22 @@
+{
+  "display": "minecraft:sandstone",
+  "settings": {
+    "biome": "minecraft:plains",
+    "features": false,
+    "lakes": false,
+    "layers": [
+      {
+        "block": "minecraft:bedrock",
+        "height": 1
+      },
+      {
+        "block": "minecraft:sandstone",
+        "height": 2
+      },
+      {
+        "block": "minecraft:sandstone",
+        "height": 1
+      }
+    ]
+  }
+}

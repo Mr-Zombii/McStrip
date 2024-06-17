@@ -1,0 +1,73 @@
+{
+  "dimensions": {
+    "minecraft:overworld": {
+      "type": "minecraft:overworld",
+      "generator": {
+        "type": "minecraft:flat",
+        "settings": {
+          "biome": "minecraft:desert",
+          "features": false,
+          "lakes": false,
+          "layers": [
+            {
+              "block": "minecraft:bedrock",
+              "height": 1
+            },
+            {
+              "block": "minecraft:sandstone",
+              "height": 59
+            }
+          ],
+          "structure_overrides": [
+          ]
+        }
+      }
+    }
+  },
+  "minecraft:the_end": {
+    "type": "minecraft:overworld",
+    "generator": {
+      "type": "minecraft:flat",
+      "settings": {
+        "biome": "minecraft:desert",
+        "features": false,
+        "lakes": false,
+        "layers": [
+          {
+            "block": "minecraft:bedrock",
+            "height": 1
+          },
+          {
+            "block": "minecraft:sandstone",
+            "height": 59
+          }
+        ],
+        "structure_overrides": [
+        ]
+      }
+    }
+  },
+  "minecraft:the_nether": {
+    "type": "minecraft:overworld",
+    "generator": {
+      "type": "minecraft:flat",
+      "settings": {
+        "biome": "minecraft:desert",
+        "features": false,
+        "lakes": false,
+        "layers": [
+          {
+            "block": "minecraft:bedrock",
+            "height": 1
+          },
+          {
+            "block": "minecraft:sandstone",
+            "height": 59
+          }
+        ],
+        "structure_overrides": [
+        ]
+      }
+    }
+  }
+}
