@@ -10,6 +10,7 @@
 	},
 	"mixins": [
 		"WorldTabMixin",
-		"GameMenuScreenMixin"
+		"GameMenuScreenMixin",
+		"PlayerMixin"
 	]
 }
