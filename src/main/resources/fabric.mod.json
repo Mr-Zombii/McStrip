@@ -6,13 +6,13 @@
 	"description": "This is a mod that strips minecraft down for computational redstone development",
 	"authors": [
 		"Mr_Zombii",
-		"M4xpizza"
+		"M4ximumpizza"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Mr-Zombii/McStrip",
+		"issues": "https://github.com/Mr-Zombii/McStrip/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "Polyform-Shield-1.0.0",
 	"icon": "assets/mcstrip/icon.png",
 	"environment": "*",
 	"entrypoints": {

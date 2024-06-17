@@ -17,7 +17,9 @@
     "RegistryLoaderMixin",
     "ServerAdvLoaderMixin",
     "SimpleRegistryMixin",
-    "RedstoneRepeaterMixin"
+    "RedstoneRepeaterMixin",
+    "ComparatorBlockMixin",
+    "RedstoneTorchMixin"
   ],
   "injectors": {
     "defaultRequire": 1
