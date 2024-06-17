@@ -1,10 +1,18 @@
 package me.zombii.mcstrip;
 
+import me.zombii.mcstrip.improved_redstone.ImprovedBlocks;
+import me.zombii.mcstrip.improved_redstone.ImprovedItems;
+import me.zombii.mcstrip.improved_redstone.blocks.ImprovedComparatorBlock;
+import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneRepeaterBlock;
+import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneTorchBlock;
+import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneWallTorchBlock;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.component.ComponentType;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.inventory.Inventories;
@@ -14,18 +22,22 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.Direction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import static me.zombii.mcstrip.improved_redstone.ImprovedBlocks.*;
 import static net.minecraft.item.ItemGroups.HOTBAR;
 import static net.minecraft.item.ItemGroups.SEARCH;
 
@@ -35,6 +47,7 @@ public class McStrip implements ModInitializer {
 	private static final Identifier ITEM_SEARCH_TAB_TEXTURE_ID = ItemGroup.getTabTextureId("item_search");
 
 	public static final RegistryKey<ItemGroup> REDSTONE_KEY = register("redstone_components");
+	public static final RegistryKey<ItemGroup> IMPROVED_REDSTONE_KEY = register("improved_redstone_components");
 //	public static final RegistryKey<ItemGroup> BARREL_KEY = register("barrel_values");
 	public static final RegistryKey<ItemGroup> CONCRETE_KEY = register("colored_concrete");
 	public static final RegistryKey<ItemGroup> GLASS_KEY = register("colored_glass");
@@ -45,8 +58,19 @@ public class McStrip implements ModInitializer {
 		return RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier.ofVanilla(id));
 	}
 
+	private static void idk(Object o) {}
+
 	@Override
 	public void onInitialize() {
+		ImprovedBlocks.IMPROVED_REDSTONE_REPEATER = Registry.register(Registries.BLOCK, Identifier.of(modId, "improved_repeater"), new ImprovedRedstoneRepeaterBlock(AbstractBlock.Settings.create().breakInstantly().sounds(BlockSoundGroup.STONE).pistonBehavior(PistonBehavior.DESTROY)));
+		ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR = Registry.register(Registries.BLOCK, Identifier.of(modId, "improved_comparator"), new ImprovedComparatorBlock(AbstractBlock.Settings.create().breakInstantly().sounds(BlockSoundGroup.STONE).pistonBehavior(PistonBehavior.DESTROY)));
+		ImprovedBlocks.IMPROVED_REDSTONE_TORCH = Registry.register(Registries.BLOCK, Identifier.of(modId, "improved_redstone_torch"), new ImprovedRedstoneTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(Blocks.createLightLevelFromLitBlockState(7)).sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY)));
+		ImprovedBlocks.IMPROVED_REDSTONE_WALL_TORCH = Registry.register(Registries.BLOCK, Identifier.of(modId, "improved_redstone_wall_torch"), new ImprovedRedstoneWallTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(Blocks.createLightLevelFromLitBlockState(7)).sounds(BlockSoundGroup.WOOD).dropsLike(ImprovedBlocks.IMPROVED_REDSTONE_TORCH).pistonBehavior(PistonBehavior.DESTROY)));
+
+		ImprovedItems.IMPROVED_REDSTONE_REPEATER = Items.register(IMPROVED_REDSTONE_REPEATER);
+		ImprovedItems.IMPROVED_REDSTONE_COMPARATOR = Items.register(IMPROVED_REDSTONE_COMPARATOR);
+		ImprovedItems.IMPROVED_REDSTONE_TORCH = Items.register(new VerticallyAttachableBlockItem(IMPROVED_REDSTONE_TORCH, IMPROVED_REDSTONE_WALL_TORCH, new Item.Settings(), Direction.DOWN));
+
 		ItemGroup.Builder redstone = ItemGroup.create(ItemGroup.Row.TOP, 0);
 		redstone.displayName(Text.of("Redstone Components"));
 		redstone.icon(() -> new ItemStack(Items.REDSTONE));
@@ -71,6 +95,16 @@ public class McStrip implements ModInitializer {
 			entries.add(Items.TARGET);
 		}));
 		Registry.register(Registries.ITEM_GROUP, REDSTONE_KEY, redstone.build());
+
+		ItemGroup.Builder improved_redstone = ItemGroup.create(ItemGroup.Row.TOP, 0);
+		improved_redstone.displayName(Text.of("Better Redstone Components"));
+		improved_redstone.icon(() -> new ItemStack(ImprovedBlocks.IMPROVED_REDSTONE_REPEATER));
+		improved_redstone.entries(((displayContext, entries) -> {
+			entries.add(ImprovedItems.IMPROVED_REDSTONE_REPEATER);
+			entries.add(ImprovedItems.IMPROVED_REDSTONE_COMPARATOR);
+			entries.add(ImprovedItems.IMPROVED_REDSTONE_TORCH);
+		}));
+		Registry.register(Registries.ITEM_GROUP, IMPROVED_REDSTONE_KEY, improved_redstone.build());
 
 //		ItemGroup.Builder barrels = ItemGroup.create(ItemGroup.Row.TOP, 0);
 //		barrels.displayName(Text.of("Barrel Strengths"));

@@ -12,3 +12,4 @@ accessible field net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTa
 accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$GameTab
 accessible class net/minecraft/client/gui/screen/GameMenuScreen$FeedbackScreen
 accessible method net/minecraft/registry/RegistryBuilder toLookup (Lnet/minecraft/registry/RegistryWrapper$Impl;)Lnet/minecraft/registry/RegistryEntryLookup;
+accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)I
