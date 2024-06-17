@@ -17,7 +17,8 @@
     "RecipeManagerMixin",
     "RegistryLoaderMixin",
     "ServerAdvLoaderMixin",
-    "SimpleRegistryMixin"
+    "SimpleRegistryMixin",
+    "RedstoneRepeaterMixin"
   ],
   "injectors": {
     "defaultRequire": 1
