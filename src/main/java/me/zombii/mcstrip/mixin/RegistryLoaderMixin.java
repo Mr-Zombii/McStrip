@@ -76,6 +76,7 @@ public class RegistryLoaderMixin {
                 if (
                         !identifier.getNamespace().equals("c") &&
                                 !identifier.getNamespace().equals("minecraft") ||
+                                identifier.getPath().contains("improved") ||
                                 identifier.getPath().contains("worldgen/world_preset/normal.json") ||
                                 identifier.getPath().contains("worldgen/biome") ||
                                 identifier.getPath().contains("worldgen/noise/") ||

@@ -137,7 +137,13 @@ public class ItemsMixin {
                 // Misc Items
                 "compass",
                 "wooden_axe",
-                "stick"
+                "stick",
+
+                // Improved Items
+                "improved_redstone_torch",
+                "improved_redstone_wall_torch",
+                "improved_repeater",
+                "improved_comparator"
         );
 
         if (!allowedList.contains(id.getPath())) {

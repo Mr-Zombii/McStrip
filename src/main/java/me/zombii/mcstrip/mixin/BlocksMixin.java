@@ -103,7 +103,13 @@ public class BlocksMixin {
 				"stone",
 				"bedrock",
 
-				"bookshelf"
+				"bookshelf",
+
+				// Improved Items
+				"improved_redstone_torch",
+				"improved_redstone_wall_torch",
+				"improved_repeater",
+				"improved_comparator"
 		);
 
 		if (!allowedList.contains(id)) {
