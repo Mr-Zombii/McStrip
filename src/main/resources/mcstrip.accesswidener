@@ -10,3 +10,4 @@ accessible field net/minecraft/client/gui/screen/Screen textRenderer Lnet/minecr
 accessible method net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab getWorldTypeNarrationMessage (Lnet/minecraft/client/gui/widget/CyclingButtonWidget;)Lnet/minecraft/text/MutableText;
 accessible field net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab SEED_INFO_TEXT Lnet/minecraft/text/Text;
 accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$GameTab
+accessible class net/minecraft/client/gui/screen/GameMenuScreen$FeedbackScreen
