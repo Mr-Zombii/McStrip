@@ -11,3 +11,4 @@ accessible method net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldT
 accessible field net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab SEED_INFO_TEXT Lnet/minecraft/text/Text;
 accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$GameTab
 accessible class net/minecraft/client/gui/screen/GameMenuScreen$FeedbackScreen
+accessible method net/minecraft/registry/RegistryBuilder toLookup (Lnet/minecraft/registry/RegistryWrapper$Impl;)Lnet/minecraft/registry/RegistryEntryLookup;

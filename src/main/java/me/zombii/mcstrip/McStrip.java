@@ -2,19 +2,29 @@ package me.zombii.mcstrip;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.component.ComponentType;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.*;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import static net.minecraft.item.ItemGroups.HOTBAR;
 import static net.minecraft.item.ItemGroups.SEARCH;
@@ -25,6 +35,7 @@ public class McStrip implements ModInitializer {
 	private static final Identifier ITEM_SEARCH_TAB_TEXTURE_ID = ItemGroup.getTabTextureId("item_search");
 
 	public static final RegistryKey<ItemGroup> REDSTONE_KEY = register("redstone_components");
+//	public static final RegistryKey<ItemGroup> BARREL_KEY = register("barrel_values");
 	public static final RegistryKey<ItemGroup> CONCRETE_KEY = register("colored_concrete");
 	public static final RegistryKey<ItemGroup> GLASS_KEY = register("colored_glass");
 	public static final RegistryKey<ItemGroup> WOOL_KEY = register("colored_wool");
@@ -41,21 +52,35 @@ public class McStrip implements ModInitializer {
 		redstone.icon(() -> new ItemStack(Items.REDSTONE));
 		redstone.entries(((displayContext, entries) -> {
 			entries.add(Items.REDSTONE);
-			entries.add(Items.BARREL);
 			entries.add(Items.REPEATER);
 			entries.add(Items.COMPARATOR);
+
 			entries.add(Items.REDSTONE_TORCH);
 			entries.add(Items.REDSTONE_BLOCK);
+
 			entries.add(Items.REDSTONE_LAMP);
-			entries.add(Items.STONE_BUTTON);
-			entries.add(Items.OAK_BUTTON);
-			entries.add(Items.TARGET);
-			entries.add(Items.LEVER);
 			entries.add(Items.WAXED_COPPER_BULB);
+
 			entries.add(Items.IRON_TRAPDOOR);
 			entries.add(Items.OAK_TRAPDOOR);
+
+			entries.add(Items.STONE_BUTTON);
+			entries.add(Items.OAK_BUTTON);
+
+			entries.add(Items.LEVER);
+			entries.add(Items.TARGET);
 		}));
 		Registry.register(Registries.ITEM_GROUP, REDSTONE_KEY, redstone.build());
+
+//		ItemGroup.Builder barrels = ItemGroup.create(ItemGroup.Row.TOP, 0);
+//		barrels.displayName(Text.of("Barrel Strengths"));
+//		barrels.icon(() -> new ItemStack(Items.BARREL));
+//		barrels.entries(((displayContext, entries) -> {
+////			entries.add(Items.BARREL);
+////			entries.add(getFilledItem(Items.BARREL, Items.WOODEN_AXE, 1));
+//			entries.add(getFilledItem(Blocks.BARREL, Items.WOODEN_AXE, 27));
+//		}));
+//		Registry.register(Registries.ITEM_GROUP, BARREL_KEY, barrels.build());
 
 		ItemGroup.Builder concrete = ItemGroup.create(ItemGroup.Row.TOP, 1);
 		concrete.displayName(Text.of("Colored Concretes"));
@@ -145,16 +170,30 @@ public class McStrip implements ModInitializer {
 			return new ItemStack(Items.COMPASS);
 		}).entries((displayContext, entries) -> {
 			Set<ItemStack> set = ItemStackSet.create();
-			Iterator var4 = Registries.ITEM_GROUP.iterator();
 
-			while(var4.hasNext()) {
-				ItemGroup itemGroup = (ItemGroup)var4.next();
-				if (itemGroup.getType() != ItemGroup.Type.SEARCH) {
-					set.addAll(itemGroup.getSearchTabStacks());
-				}
-			}
+            for (ItemGroup itemGroup : Registries.ITEM_GROUP) {
+                if (itemGroup.getType() != ItemGroup.Type.SEARCH) {
+                    set.addAll(itemGroup.getSearchTabStacks());
+                }
+            }
 
 			entries.addAll(set);
 		}).texture(ITEM_SEARCH_TAB_TEXTURE_ID).special().type(ItemGroup.Type.SEARCH).build());
 	}
+//
+//	public static ItemStack getFilledItem(Block item, Item fill, int count) {
+//		NbtCompound compound = new NbtCompound();
+//		DefaultedList<ItemStack> items = DefaultedList.of();
+//		for (int i = 0; i < count; i++) {
+//			items.add(fill.getDefaultStack());
+//		}
+//		RegistryWrapper.WrapperLookup lookup = RegistryWrapper.WrapperLookup.of(Stream.of(Registries.ITEM.getTagCreatingWrapper()));
+//		Inventories.writeNbt(compound, items, lookup);
+//		NbtCompound compound1 = new NbtCompound();
+//		compound1.putString("id", "minecraft:barrel");
+//		compound1.put("slots", compound);
+//		var barrel = ItemStack.fromNbt(lookup, compound1).get();
+//		BlockItem.setBlockEntityData(barrel, BlockEntityType.BARREL, compound);
+//		return barrel;
+//	}
 }
