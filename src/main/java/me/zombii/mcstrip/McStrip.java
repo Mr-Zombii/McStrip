@@ -2,10 +2,7 @@ package me.zombii.mcstrip;
 
 import me.zombii.mcstrip.improved_redstone.ImprovedBlocks;
 import me.zombii.mcstrip.improved_redstone.ImprovedItems;
-import me.zombii.mcstrip.improved_redstone.blocks.ImprovedComparatorBlock;
-import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneRepeaterBlock;
-import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneTorchBlock;
-import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneWallTorchBlock;
+import me.zombii.mcstrip.improved_redstone.blocks.*;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.block.AbstractBlock;
@@ -57,9 +54,11 @@ public class McStrip implements ModInitializer {
 		ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR = register(Identifier.of(modId, "improved_comparator"), new ImprovedComparatorBlock(AbstractBlock.Settings.create().breakInstantly().sounds(BlockSoundGroup.STONE).pistonBehavior(PistonBehavior.DESTROY)));
 		ImprovedBlocks.IMPROVED_REDSTONE_TORCH = register(Identifier.of(modId, "improved_redstone_torch"), new ImprovedRedstoneTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(createLightLevelFromLitBlockState(7)).sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY)));
 		ImprovedBlocks.IMPROVED_REDSTONE_WALL_TORCH = register(Identifier.of(modId, "improved_redstone_wall_torch"), new ImprovedRedstoneWallTorchBlock(AbstractBlock.Settings.create().noCollision().breakInstantly().luminance(createLightLevelFromLitBlockState(7)).sounds(BlockSoundGroup.WOOD).dropsLike(ImprovedBlocks.IMPROVED_REDSTONE_TORCH).pistonBehavior(PistonBehavior.DESTROY)));
+		ImprovedBlocks.IMPROVED_REDSTONE_LAMP = register(Identifier.of(modId, "improved_redstone_lamp"), new ImprovedRedstoneLamp(AbstractBlock.Settings.create().luminance(createLightLevelFromLitBlockState(15)).strength(0.3F).sounds(BlockSoundGroup.GLASS).allowsSpawning(Blocks::always)));
 
 		ImprovedItems.IMPROVED_REDSTONE_REPEATER = Items.register(IMPROVED_REDSTONE_REPEATER);
 		ImprovedItems.IMPROVED_REDSTONE_COMPARATOR = Items.register(IMPROVED_REDSTONE_COMPARATOR);
+		ImprovedItems.IMPROVED_REDSTONE_LAMP = Items.register(IMPROVED_REDSTONE_LAMP);
 		ImprovedItems.IMPROVED_REDSTONE_TORCH = Items.register(new VerticallyAttachableBlockItem(IMPROVED_REDSTONE_TORCH, IMPROVED_REDSTONE_WALL_TORCH, new Item.Settings(), Direction.DOWN));
 
 		ItemGroup.Builder redstone = ItemGroup.create(ItemGroup.Row.TOP, 0);
@@ -94,6 +93,7 @@ public class McStrip implements ModInitializer {
 			entries.add(ImprovedItems.IMPROVED_REDSTONE_TORCH);
 			entries.add(ImprovedItems.IMPROVED_REDSTONE_COMPARATOR);
 			entries.add(ImprovedItems.IMPROVED_REDSTONE_REPEATER);
+			entries.add(ImprovedItems.IMPROVED_REDSTONE_LAMP);
 		}));
 		Registry.register(Registries.ITEM_GROUP, IMPROVED_REDSTONE_KEY, improved_redstone.build());
 

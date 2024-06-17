@@ -9,4 +9,6 @@ public class ImprovedItems {
 
     public static Item IMPROVED_REDSTONE_TORCH;
 
+    public static Item IMPROVED_REDSTONE_LAMP;
+
 }

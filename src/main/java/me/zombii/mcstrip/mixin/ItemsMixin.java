@@ -143,7 +143,8 @@ public class ItemsMixin {
                 "improved_redstone_torch",
                 "improved_redstone_wall_torch",
                 "improved_repeater",
-                "improved_comparator"
+                "improved_comparator",
+                "improved_redstone_lamp"
         );
 
         if (!allowedList.contains(id.getPath())) {
