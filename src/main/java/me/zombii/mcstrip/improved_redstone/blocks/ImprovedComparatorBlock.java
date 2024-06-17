@@ -30,6 +30,7 @@ public class ImprovedComparatorBlock extends ComparatorBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(MODE, ComparatorMode.COMPARE));
     }
 
+    @Override
     public void updatePowered(World world, BlockPos pos, BlockState state) {
         if (!world.getBlockTickScheduler().isTicking(pos, this)) {
             int i = this.calculateOutputSignal(world, pos, state);
@@ -43,6 +44,7 @@ public class ImprovedComparatorBlock extends ComparatorBlock {
         }
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, MODE, POWERED);
     }

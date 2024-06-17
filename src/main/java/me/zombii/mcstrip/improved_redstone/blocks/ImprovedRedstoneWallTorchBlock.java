@@ -20,12 +20,14 @@ public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(LIT, true));
     }
 
+    @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (state.get(LIT) == this.shouldUnpower(world, pos, state) && !world.getBlockTickScheduler().isTicking(pos, this)) {
             world.scheduleBlockTick(pos, this, -1);
         }
     }
 
+    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         boolean bl = this.shouldUnpower(world, pos, state);
 
@@ -36,6 +38,7 @@ public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
         } else world.setBlockState(pos, state.with(LIT, true), 3);
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, LIT);
     }

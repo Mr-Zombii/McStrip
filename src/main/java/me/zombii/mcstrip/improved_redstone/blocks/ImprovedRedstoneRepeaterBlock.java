@@ -26,10 +26,12 @@ public class ImprovedRedstoneRepeaterBlock extends RepeaterBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(DELAY, 1).with(LOCKED, false).with(POWERED, false));
     }
 
+    @Override
     public int getUpdateDelayInternal(BlockState state) {
         return state.get(DELAY) - 1;
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, DELAY, LOCKED, POWERED);
     }

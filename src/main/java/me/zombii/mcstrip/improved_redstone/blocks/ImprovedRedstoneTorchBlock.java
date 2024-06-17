@@ -22,12 +22,14 @@ public class ImprovedRedstoneTorchBlock extends RedstoneTorchBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(LIT, true));
     }
 
+    @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (state.get(LIT) == this.shouldUnpower(world, pos, state) && !world.getBlockTickScheduler().isTicking(pos, this)) {
             world.scheduleBlockTick(pos, this, -1);
         }
     }
 
+    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         boolean bl = this.shouldUnpower(world, pos, state);
 
@@ -38,6 +40,7 @@ public class ImprovedRedstoneTorchBlock extends RedstoneTorchBlock {
         } else world.setBlockState(pos, state.with(LIT, true), 3);
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT);
     }
