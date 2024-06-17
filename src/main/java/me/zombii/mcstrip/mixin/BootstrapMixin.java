@@ -10,12 +10,10 @@ public class BootstrapMixin {
 
     @Redirect(method = "initialize", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/FireBlock;registerDefaultFlammables()V"))
     private static void registerFlammables() {
-
     }
 
-//    @Redirect(method = "initialize", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/ComposterBlock;registerDefaultCompostableItems()V"))
-//    private static void registerDefaultCompostableItems() {
-//
-//    }
+    @Redirect(method = "initialize", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/ComposterBlock;registerDefaultCompostableItems()V"))
+    private static void registerDefaultCompostableItems() {
+    }
 
 }

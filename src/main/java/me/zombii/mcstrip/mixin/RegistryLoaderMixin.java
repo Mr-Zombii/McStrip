@@ -59,9 +59,15 @@ public class RegistryLoaderMixin {
                 if (
                         !identifier.getNamespace().equals("c") &&
                                 !identifier.getNamespace().equals("minecraft") ||
-                                identifier.getPath().contains("flat_level_generator_preset/redstone_ready") ||
+                                identifier.getPath().contains("worldgen/world_preset/normal.json") ||
+                                identifier.getPath().contains("worldgen/biome") ||
+                                identifier.getPath().contains("worldgen/noise/") ||
+                                identifier.getPath().contains("worldgen/multi_noise_biome_source") ||
+                                identifier.getPath().contains("damage_type") ||
+                                identifier.getPath().contains("flat_level_generator_preset/redstone_ready.json") ||
                                 identifier.getPath().contains("world_preset/flat") ||
-                                identifier.getPath().contains("dimension_type/overworld")
+                                identifier.getPath().contains("dimension_type/") ||
+                                identifier.getPath().contains("worldgen/noise_settings")
                 ) {
                     resources2.put(identifier, resources.get(identifier));
                 }

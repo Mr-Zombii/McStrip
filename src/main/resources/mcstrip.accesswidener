@@ -3,3 +3,10 @@ accessWidener v2 named
 accessible class net/minecraft/registry/RegistryLoader$Loader
 accessible field net/minecraft/registry/RegistryLoader$Loader data Lnet/minecraft/registry/RegistryLoader$Entry;
 accessible field net/minecraft/registry/RegistryLoader$Entry requiredNonEmpty Z
+accessible method net/minecraft/item/ItemGroup$Builder type (Lnet/minecraft/item/ItemGroup$Type;)Lnet/minecraft/item/ItemGroup$Builder;
+accessible class net/minecraft/client/gui/screen/world/WorldScreenOptionGrid
+accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab
+accessible field net/minecraft/client/gui/screen/Screen textRenderer Lnet/minecraft/client/font/TextRenderer;
+accessible method net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab getWorldTypeNarrationMessage (Lnet/minecraft/client/gui/widget/CyclingButtonWidget;)Lnet/minecraft/text/MutableText;
+accessible field net/minecraft/client/gui/screen/world/CreateWorldScreen$WorldTab SEED_INFO_TEXT Lnet/minecraft/text/Text;
+accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$GameTab

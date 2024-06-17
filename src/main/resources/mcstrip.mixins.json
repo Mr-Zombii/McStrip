@@ -7,6 +7,8 @@
     "BlockSettingsMixin",
     "BlocksMixin",
     "BootstrapMixin",
+    "AxeItemMixin",
+    "ItemGroupsMixin",
     "ItemsMixin",
     "LootTablesMixin",
     "RecipeManagerMixin",

@@ -3,10 +3,12 @@
 	"package": "me.zombii.mcstrip.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
+		"GameTabMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
 	},
 	"mixins": [
+		"WorldTabMixin"
 	]
 }
