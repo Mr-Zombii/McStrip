@@ -38,7 +38,7 @@ public class CommandManagerMixin {
     private void meReg(CommandDispatcher<ServerCommandSource> dispatcher) {}
 
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/command/ExecuteCommand;register(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/command/CommandRegistryAccess;)V"))
-    private void expReg(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess) {}
+    private void excReg(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess) {}
 
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/command/EnchantCommand;register(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/command/CommandRegistryAccess;)V"))
     private void encReg(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess) {}
@@ -129,5 +129,11 @@ public class CommandManagerMixin {
 
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/command/DebugConfigCommand;register(Lcom/mojang/brigadier/CommandDispatcher;)V"))
     private void dccReg(CommandDispatcher<ServerCommandSource> dispatcher) {}
+
+    @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/command/TeamMsgCommand;register(Lcom/mojang/brigadier/CommandDispatcher;)V"))
+    private void tmgReg(CommandDispatcher<ServerCommandSource> dispatcher) {}
+
+    @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/command/ExperienceCommand;register(Lcom/mojang/brigadier/CommandDispatcher;)V"))
+    private void expReg(CommandDispatcher<ServerCommandSource> dispatcher) {}
 
 }
