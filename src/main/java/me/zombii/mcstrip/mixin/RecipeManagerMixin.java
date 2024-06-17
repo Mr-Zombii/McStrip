@@ -34,5 +34,4 @@ public class RecipeManagerMixin {
         recipesById = builder2.build();
         ci.cancel();
     }
-
 }
