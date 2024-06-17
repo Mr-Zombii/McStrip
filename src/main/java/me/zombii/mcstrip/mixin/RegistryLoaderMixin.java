@@ -45,13 +45,30 @@ public class RegistryLoaderMixin {
                 Field dirName = ResourceFinder.class.getDeclaredField("directoryName");
                 dirName.setAccessible(true);
                 directoryName = (String) dirName.get(instance);
+            } catch (NoSuchFieldException | IllegalAccessException ignored) {
+                try {
+                    Field dirName = ResourceFinder.class.getDeclaredField("field_39966");
+                    dirName.setAccessible(true);
+                    directoryName = (String) dirName.get(instance);
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            }
 
+            try {
                 Field fileExt = ResourceFinder.class.getDeclaredField("fileExtension");
                 fileExt.setAccessible(true);
                 fileExtension = (String) fileExt.get(instance);
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                throw new RuntimeException(e);
+            } catch (NoSuchFieldException | IllegalAccessException ignored) {
+                try {
+                    Field fileExt = ResourceFinder.class.getDeclaredField("field_39967");
+                    fileExt.setAccessible(true);
+                    fileExtension = (String) fileExt.get(instance);
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
             }
+
             String finalFileExtension = fileExtension;
             Map<Identifier, Resource> resources = resourceManager.findResources(directoryName, (path) -> path.getPath().endsWith(finalFileExtension));
             Map<Identifier, Resource> resources2 = new HashMap<>();
