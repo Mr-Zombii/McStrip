@@ -11,15 +11,12 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.*;
+import net.minecraft.client.gui.screen.GameMenuScreen.FeedbackScreen;
 import net.minecraft.client.gui.screen.advancement.AdvancementsScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.SocialInteractionsScreen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.GridWidget;
-import net.minecraft.client.gui.widget.SimplePositioningWidget;
-import net.minecraft.client.gui.widget.TextWidget;
-import net.minecraft.client.gui.widget.ThreePartsLayoutWidget;
+import net.minecraft.client.gui.widget.*;
 import net.minecraft.client.network.ServerInfo;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.screen.ScreenTexts;
@@ -33,13 +30,16 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameMenuScreen.class)
 public abstract class GameMenuScreenMixin extends Screen {
     @Shadow protected abstract ButtonWidget createButton(Text text, Supplier<Screen> screenSupplier);
 
-    @Shadow abstract void addFeedbackAndBugsButtons(Screen parentScreen, GridWidget.Adder gridAdder);
+    @Shadow
+    static void addFeedbackAndBugsButtons(Screen parentScreen, GridWidget.Adder gridAdder) {
+    }
 
     @Shadow @Nullable private ButtonWidget exitButton;
 
@@ -58,51 +58,19 @@ public abstract class GameMenuScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(method = "initWidgets", at = @At("HEAD"))
-    private void initWidgets(CallbackInfo ci) {
-        GridWidget gridWidget = new GridWidget();
-        gridWidget.getMainPositioner().margin(4, 4, 4, 0);
-        GridWidget.Adder adder = gridWidget.createAdder(2);
-        adder.add(ButtonWidget.builder(RETURN_TO_GAME_TEXT, (button) -> {
-            client.setScreen(null);
-            this.client.mouse.lockCursor();
-        }).width(204).build(), 2, gridWidget.copyPositioner().marginTop(50));
-        adder.add(createButton(STATS_TEXT, () -> {
-            return new StatsScreen(this, this.client.player.getStatHandler());
-        }));
-        ServerLinks serverLinks = this.client.player.networkHandler.getServerLinks();
-        if (serverLinks.isEmpty()) {
-            addFeedbackAndBugsButtons(this, adder);
-        } else {
-            adder.add(this.createButton(FEEDBACK_TEXT, () -> {
-                return new GameMenuScreen.FeedbackScreen(this);
-            }));
-            adder.add(this.createButton(SERVER_LINKS_TEXT, () -> {
-                return new ServerLinksScreen(this, serverLinks);
-            }));
-        }
+    @Unique
+    private int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
 
-        adder.add(this.createButton(OPTIONS_TEXT, () -> {
-            return new OptionsScreen(this, this.client.options);
-        }));
-        if (this.client.isIntegratedServerRunning() && !this.client.getServer().isRemote()) {
-            adder.add(this.createButton(SHARE_TO_LAN_TEXT, () -> {
-                return new OpenToLanScreen(this);
-            }));
-        } else {
-            adder.add(this.createButton(PLAYER_REPORTING_TEXT, () -> {
-                return new SocialInteractionsScreen(this);
-            }));
-        }
-
-        Text text = this.client.isInSingleplayer() ? RETURN_TO_MENU_TEXT : ScreenTexts.DISCONNECT;
-        exitButton = (ButtonWidget)adder.add(ButtonWidget.builder(text, (button) -> {
-            button.active = false;
-            this.client.getAbuseReportContext().tryShowDraftScreen(this.client, this, this::disconnect, true);
-        }).width(204).build(), 2);
-        gridWidget.refreshPositions();
-        SimplePositioningWidget.setPos(gridWidget, 0, 0, this.width, this.height, 0.5F, 0.25F);
-        gridWidget.forEachChild(this::addDrawableChild);
+    @Redirect(method = "initWidgets", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;", ordinal = 0))
+    private Widget initWidgets(GridWidget.Adder instance, Widget widget) {
+        instance.add(ButtonWidget.builder(Text.of("What does this do?"), (button) -> {
+            if (getRandomNumber(0, 400) == 6) {
+                throw new RuntimeException("Oh, wow you found a Shiny Error");
+            }
+        }).width(98).build());
+        return null;
     }
 
 }
