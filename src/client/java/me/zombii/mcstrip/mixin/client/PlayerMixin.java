@@ -19,7 +19,7 @@ import java.util.Set;
 public class PlayerMixin {
 
     @Unique
-    private static final Set<String> upsideDownNames = new HashSet();
+    private static final Set<String> upsideDownNames = new HashSet<>();
 
     public PlayerMixin() {
     }
