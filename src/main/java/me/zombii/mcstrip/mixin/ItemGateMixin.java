@@ -141,7 +141,9 @@ public class ItemGateMixin {
                 "piston",
                 "sticky_piston",
                 "slime_block",
-                "obsidian", "observer"
+                "obsidian",
+                "observer",
+                "oak_sign"
         );
 
         if (Objects.equals(id.getNamespace(), "minecraft")) {
