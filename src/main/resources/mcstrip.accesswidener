@@ -13,6 +13,7 @@ accessible class net/minecraft/client/gui/screen/world/CreateWorldScreen$GameTab
 accessible class net/minecraft/client/gui/screen/GameMenuScreen$FeedbackScreen
 accessible method net/minecraft/registry/RegistryBuilder toLookup (Lnet/minecraft/registry/RegistryWrapper$Impl;)Lnet/minecraft/registry/RegistryEntryLookup;
 accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)I
-
 accessible field net/minecraft/block/entity/BlockEntityType$Builder blocks Ljava/util/Set;
 accessible field net/minecraft/block/BlockSetType VALUES Ljava/util/Map;
+accessible field net/minecraft/client/gui/screen/world/ExperimentsScreen applier Ljava/util/function/Consumer;
+accessible field net/minecraft/client/gui/screen/world/ExperimentsScreen resourcePackManager Lnet/minecraft/resource/ResourcePackManager;

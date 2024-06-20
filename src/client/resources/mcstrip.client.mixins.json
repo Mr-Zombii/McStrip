@@ -1,16 +1,17 @@
 {
-	"required": true,
-	"package": "me.zombii.mcstrip.mixin.client",
-	"compatibilityLevel": "JAVA_17",
-	"client": [
-		"GameTabMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"mixins": [
-		"WorldTabMixin",
-		"GameMenuScreenMixin",
-		"PlayerMixin"
-	]
+  "required": true,
+  "package": "me.zombii.mcstrip.mixin.client",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "ExperimentalSettingsWarningRemoverMixin",
+    "GameSettingsPresetMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AdvancementButtonHiderMixin",
+    "InvertedPlayerMixin",
+    "GameRulesPresetMixin"
+  ]
 }

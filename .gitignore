@@ -38,3 +38,14 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+basicServer/.fabric
+basicServer/config
+basicServer/libraries
+basicServer/logs
+basicServer/versions
+basicServer/world
+basicServer/banned-ips.json
+basicServer/banned-players.json
+basicServer/ops.json
+basicServer/usercache.json
+basicServer/whitelist.json
