@@ -128,8 +128,6 @@ public class ItemGateMixin {
                 "barrel",
 
                 "sandstone",
-                "grass_block",
-                "stone",
                 "bedrock",
 
                 "bookshelf",
@@ -138,14 +136,12 @@ public class ItemGateMixin {
                 "compass",
                 "wooden_axe",
                 "stick",
-                "paper"
+                "paper",
 
-                // Improved Items
-//                "improved_redstone_torch",
-//                "improved_redstone_wall_torch",
-//                "improved_repeater",
-//                "improved_comparator",
-//                "improved_redstone_lamp"
+                "piston",
+                "sticky_piston",
+                "slime_block",
+                "obsidian", "observer"
         );
 
         if (Objects.equals(id.getNamespace(), "minecraft")) {

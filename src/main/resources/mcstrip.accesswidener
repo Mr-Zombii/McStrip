@@ -15,5 +15,4 @@ accessible method net/minecraft/registry/RegistryBuilder toLookup (Lnet/minecraf
 accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)I
 accessible field net/minecraft/block/entity/BlockEntityType$Builder blocks Ljava/util/Set;
 accessible field net/minecraft/block/BlockSetType VALUES Ljava/util/Map;
-accessible field net/minecraft/client/gui/screen/world/ExperimentsScreen applier Ljava/util/function/Consumer;
-accessible field net/minecraft/client/gui/screen/world/ExperimentsScreen resourcePackManager Lnet/minecraft/resource/ResourcePackManager;
+accessible field net/minecraft/block/PistonBlock sticky Z

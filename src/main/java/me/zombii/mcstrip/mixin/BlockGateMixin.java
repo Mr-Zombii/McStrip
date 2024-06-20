@@ -101,18 +101,15 @@ public class BlockGateMixin {
 				"barrel",
 
 				"sandstone",
-				"grass_block",
-				"stone",
 				"bedrock",
 
-				"bookshelf"
-
-				// Improved Items
-//				"improved_redstone_torch",
-//				"improved_redstone_wall_torch",
-//				"improved_repeater",
-//				"improved_comparator",
-//				"improved_redstone_lamp"
+				"bookshelf",
+				"sticky_piston",
+				"piston",
+				"piston_head",
+				"slime_block",
+				"obsidian",
+				"observer"
 		);
 
 		if (nId.getNamespace().equals("minecraft")) {

@@ -3,5 +3,6 @@
   "block.mcstrip.improved_redstone_torch": "Improved Redstone Torch",
   "block.mcstrip.improved_redstone_wall_torch": "Improved Redstone Wall Torch",
   "block.mcstrip.improved_repeater": "Improved Redstone Repeater",
-  "block.mcstrip.improved_comparator": "Improved Comparator"
+  "block.mcstrip.improved_comparator": "Improved Comparator",
+  "block.mcstrip.improved_observer": "Improved Observer"
 }
