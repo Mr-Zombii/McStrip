@@ -3,6 +3,7 @@
   "package": "me.zombii.mcstrip.mixin.client",
   "compatibilityLevel": "JAVA_17",
   "client": [
+    "DataFixerUpperRemoverMixin",
     "ExperimentalSettingsWarningRemoverMixin",
     "GameSettingsPresetMixin"
   ],
@@ -11,7 +12,7 @@
   },
   "mixins": [
     "AdvancementButtonHiderMixin",
-    "InvertedPlayerMixin",
-    "GameRulesPresetMixin"
+    "GameRulesPresetMixin",
+    "InvertedPlayerMixin"
   ]
 }
