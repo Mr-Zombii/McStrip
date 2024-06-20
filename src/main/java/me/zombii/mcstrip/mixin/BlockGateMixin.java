@@ -109,7 +109,8 @@ public class BlockGateMixin {
 				"piston_head",
 				"slime_block",
 				"obsidian",
-				"observer"
+				"observer",
+				"oak_sign"
 		);
 
 		if (nId.getNamespace().equals("minecraft")) {

@@ -36,5 +36,7 @@ public class InvertedPlayerMixin {
 
     static {
         upsideDownNames.add("M4ximumPizza");
+        upsideDownNames.add("Mr_Zombii");
+        upsideDownNames.add("BladeForce");
     }
 }
