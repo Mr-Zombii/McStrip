@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin({BulbBlock.class})
-public class OldCopperBulbMixin extends Block {
-    public OldCopperBulbMixin(AbstractBlock.Settings settings) {
+public class OneTickCopperBulbMixin extends Block {
+    public OneTickCopperBulbMixin(AbstractBlock.Settings settings) {
         super(settings);
     }
 

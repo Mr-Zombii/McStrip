@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.Objects;
 
 @Mixin(Items.class)
-public class ItemsMixin {
+public class ItemGateMixin {
 
     private static List<String> allowedList;
 
@@ -138,23 +138,26 @@ public class ItemsMixin {
                 "compass",
                 "wooden_axe",
                 "stick",
+                "paper"
 
                 // Improved Items
-                "improved_redstone_torch",
-                "improved_redstone_wall_torch",
-                "improved_repeater",
-                "improved_comparator",
-                "improved_redstone_lamp"
+//                "improved_redstone_torch",
+//                "improved_redstone_wall_torch",
+//                "improved_repeater",
+//                "improved_comparator",
+//                "improved_redstone_lamp"
         );
 
-        if (!allowedList.contains(id.getPath())) {
-            System.out.println(id);
-            cir.setReturnValue(item);
-        }
+        if (Objects.equals(id.getNamespace(), "minecraft")) {
+            if (!allowedList.contains(id.getPath())) {
+                System.out.println(id);
+                cir.setReturnValue(item);
+            }
 
-        if (id.getPath().equals("air")) {
-            if (didAirOnce) id = Identifier.of("minecraft:redstone");
-            didAirOnce = true;
+            if (id.getPath().equals("air")) {
+                if (didAirOnce) cir.setReturnValue(item);
+                didAirOnce = true;
+            }
         }
     }
 

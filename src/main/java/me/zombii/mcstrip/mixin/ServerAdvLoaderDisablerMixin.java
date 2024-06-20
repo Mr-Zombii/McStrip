@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Map;
 
 @Mixin(ServerAdvancementLoader.class)
-public class ServerAdvLoaderMixin {
+public class ServerAdvLoaderDisablerMixin {
 
     @Shadow private AdvancementManager manager;
 
     @Inject(method = "apply(Ljava/util/Map;Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/util/profiler/Profiler;)V", at = @At("HEAD"), cancellable = true)
     private void apply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo ci) {
-        manager =  new AdvancementManager();
+        manager = new AdvancementManager();
         ci.cancel();
     }
 

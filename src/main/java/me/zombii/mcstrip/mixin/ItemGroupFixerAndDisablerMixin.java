@@ -11,16 +11,12 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Iterator;
-import java.util.Set;
 
 import static net.minecraft.item.ItemGroups.INVENTORY;
 
 @Mixin(ItemGroups.class)
-public class ItemGroupsMixin {
+public class ItemGroupFixerAndDisablerMixin {
 
     @Unique
     private static final Identifier INVENTORY_TAB_TEXTURE_ID = ItemGroup.getTabTextureId("inventory");

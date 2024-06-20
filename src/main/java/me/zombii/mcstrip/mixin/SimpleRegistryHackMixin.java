@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SimpleRegistry.class)
-public class SimpleRegistryMixin {
+public class SimpleRegistryHackMixin {
 
     @Shadow private boolean frozen;
 

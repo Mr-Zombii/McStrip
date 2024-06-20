@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Map;
 
 @Mixin(RecipeManager.class)
-public class RecipeManagerMixin {
+public class RecipeDisablerMixin {
 
     @Shadow private Multimap<RecipeType<?>, RecipeEntry<?>> recipesByType;
 

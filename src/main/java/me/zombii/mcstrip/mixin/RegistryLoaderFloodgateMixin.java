@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 @Mixin(RegistryLoader.class)
-public class RegistryLoaderMixin {
+public class RegistryLoaderFloodgateMixin {
 
     @Redirect(method = "load", at = @At(value = "INVOKE", target = "Ljava/util/List;forEach(Ljava/util/function/Consumer;)V", ordinal = 1))
     private static void l(List instance, Consumer consumer, @Local Map map) {

@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractBlock.Settings.class)
-public class BlockSettingsMixin {
+public class BlockSettingsNullFixerMixin {
 
     @Inject(at = @At("HEAD"), method = "copy", cancellable = true)
     private static void copy(AbstractBlock block, CallbackInfoReturnable<AbstractBlock.Settings> cir) {

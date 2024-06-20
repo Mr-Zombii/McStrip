@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Bootstrap.class)
-public class BootstrapMixin {
+public class BootstrapFunctionDisablerMixin {
 
     @Redirect(method = "initialize", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/FireBlock;registerDefaultFlammables()V"))
     private static void registerFlammables() {

@@ -1,6 +1,7 @@
 package me.zombii.mcstrip.mixin;
 
 import net.minecraft.block.*;
+import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -9,12 +10,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(Blocks.class)
-public class BlocksMixin {
+public class BlockGateMixin {
 
 	private static List<String> allowedList;
 
 	@Inject(at = @At("HEAD"), method = "register(Ljava/lang/String;Lnet/minecraft/block/Block;)Lnet/minecraft/block/Block;", cancellable = true)
 	private static void register(String id, Block block, CallbackInfoReturnable<Block> cir) {
+		Identifier nId = Identifier.of(id);
 		if (allowedList == null) allowedList = List.of("",
 				// Concretes
 				"white_concrete",
@@ -103,18 +105,20 @@ public class BlocksMixin {
 				"stone",
 				"bedrock",
 
-				"bookshelf",
+				"bookshelf"
 
 				// Improved Items
-				"improved_redstone_torch",
-				"improved_redstone_wall_torch",
-				"improved_repeater",
-				"improved_comparator",
-				"improved_redstone_lamp"
+//				"improved_redstone_torch",
+//				"improved_redstone_wall_torch",
+//				"improved_repeater",
+//				"improved_comparator",
+//				"improved_redstone_lamp"
 		);
 
-		if (!allowedList.contains(id)) {
-			cir.setReturnValue(block);
+		if (nId.getNamespace().equals("minecraft")) {
+			if (!allowedList.contains(id)) {
+				cir.setReturnValue(block);
+			}
 		}
 	}
 

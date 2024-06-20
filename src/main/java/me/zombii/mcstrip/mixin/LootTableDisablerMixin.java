@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LootTables.class)
-public class LootTablesMixin {
+public class LootTableDisablerMixin {
 
     @Inject(method = "register", at = @At("HEAD"), cancellable = true)
     private static void register(String id, CallbackInfoReturnable<RegistryKey<LootTable>> cir) {
