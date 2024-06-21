@@ -5,7 +5,6 @@ import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.block.enums.WireConnection;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -56,11 +55,9 @@ public abstract class RedstoneWireFixerMixin {
         if (i >= 15) i = 15;
 
         if (i != 0) {
-            Iterator var6 = Direction.Type.HORIZONTAL.iterator();
 
-            while(var6.hasNext()) {
-                Direction direction = (Direction)var6.next();
-                WireConnection wireConnection = (WireConnection)state.get((Property)DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction));
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                WireConnection wireConnection = state.get(DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction));
                 switch (wireConnection) {
                     case UP:
                         this.addPoweredParticles(world, random, pos, COLORS[i], direction, Direction.UP, -0.5F, 0.5F);
@@ -89,11 +86,11 @@ public abstract class RedstoneWireFixerMixin {
         this.wiresGivePower = true;
         int j = 0;
         if (i < 15) {
-            Iterator var5 = Direction.Type.HORIZONTAL.iterator();
+            Iterator<Direction> var5 = Direction.Type.HORIZONTAL.iterator();
 
-            while(true) {
-                while(var5.hasNext()) {
-                    Direction direction = (Direction)var5.next();
+            while (true) {
+                while (var5.hasNext()) {
+                    Direction direction = var5.next();
                     BlockPos blockPos = pos.offset(direction);
                     BlockState blockState = world.getBlockState(blockPos);
                     j = Math.max(j, this.increasePower(blockState));
@@ -108,7 +105,7 @@ public abstract class RedstoneWireFixerMixin {
                 return Math.max(i, j - 1);
             }
         } else {
-            return Math.max(i, j - 1);
+            return i;
         }
     }
 
