@@ -78,7 +78,7 @@ public class McStripItemGroups {
                 BETTER_REDSTONE_ITEMGROUP_KEY,
                 makeItemgroup(
                         ItemGroup.Row.TOP, 1,
-                        "Improved Redstone Components", Items.REDSTONE,
+                        "Improved Redstone Components", ImprovedItems.IMPROVED_REDSTONE,
                         ((displayContext, entries) -> {
                             entries.add(ImprovedItems.IMPROVED_REDSTONE);
                             entries.add(ImprovedItems.IMPROVED_REDSTONE_BLOCK);
