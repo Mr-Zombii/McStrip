@@ -45,6 +45,7 @@ basicServer/ops.json
 basicServer/banned-players.json
 basicServer/banned-ips.json
 basicServer/world
+basicServer/config
 basicServer/logs
 basicServer/libraries
 basicServer/debug
