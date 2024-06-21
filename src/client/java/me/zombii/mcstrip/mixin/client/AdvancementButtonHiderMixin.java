@@ -36,7 +36,7 @@ public abstract class AdvancementButtonHiderMixin extends Screen {
     @Redirect(method = "initWidgets", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/GridWidget$Adder;add(Lnet/minecraft/client/gui/widget/Widget;)Lnet/minecraft/client/gui/widget/Widget;", ordinal = 0))
     private Widget initWidgets(GridWidget.Adder instance, Widget widget) {
         instance.add(ButtonWidget.builder(Text.of("What does this do?"), (button) -> {
-            if (getRandomNumber(0, 400) == 6) {
+            if (getRandomNumber(0, 100) == 6) {
                 throw new RuntimeException("Oh, wow you found a Shiny Error");
             }
         }).width(98).build());

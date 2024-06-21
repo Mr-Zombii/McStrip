@@ -1,5 +1,6 @@
 package me.zombii.mcstrip.improved_redstone.blocks;
 
+import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -8,6 +9,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
@@ -25,6 +27,10 @@ public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
         if (state.get(LIT) == this.shouldUnpower(world, pos, state) && !world.getBlockTickScheduler().isTicking(pos, this)) {
             world.scheduleBlockTick(pos, this, -1);
         }
+    }
+
+    protected int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return state.get(LIT) && state.get(FACING) != direction ? ImprovedRedstoneWireBlock.MaxStrength - 1 : 0;
     }
 
     @Override

@@ -15,4 +15,7 @@ public class ImprovedBlocks {
     public static Block IMPROVED_REDSTONE_LAMP;
     public static Block IMPROVED_OBSERVER;
 
+    public static Block IMPROVED_REDSTONE;
+    public static Block IMPROVED_REDSTONE_BLOCK;
+
 }

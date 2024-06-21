@@ -12,4 +12,7 @@ public class ImprovedItems {
     public static Item IMPROVED_REDSTONE_LAMP;
     public static Item IMPROVED_OBSERVER;
 
+    public static Item IMPROVED_REDSTONE;
+    public static Item IMPROVED_REDSTONE_BLOCK;
+
 }

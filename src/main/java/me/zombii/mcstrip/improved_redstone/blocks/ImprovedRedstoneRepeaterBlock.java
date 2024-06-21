@@ -1,5 +1,6 @@
 package me.zombii.mcstrip.improved_redstone.blocks;
 
+import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RepeaterBlock;
@@ -7,8 +8,9 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockView;
 
 /**
  * An improved class that provides the implementation for the Redstone Repeater block. This makes repeaters
@@ -24,6 +26,10 @@ public class ImprovedRedstoneRepeaterBlock extends RepeaterBlock {
     public ImprovedRedstoneRepeaterBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(DELAY, 1).with(LOCKED, false).with(POWERED, false));
+    }
+
+    protected int getOutputLevel(BlockView world, BlockPos pos, BlockState state) {
+        return ImprovedRedstoneWireBlock.MaxStrength - 1;
     }
 
     @Override

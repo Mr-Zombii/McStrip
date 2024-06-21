@@ -1,15 +1,16 @@
 package me.zombii.mcstrip.improved_redstone.blocks;
 
+import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ComparatorBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ComparatorBlockEntity;
 import net.minecraft.block.enums.ComparatorMode;
+import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -42,6 +43,26 @@ public class ImprovedComparatorBlock extends ComparatorBlock {
             }
 
         }
+    }
+
+    protected int getPower(World world, BlockPos pos, BlockState state) {
+        int i = super.getPower(world, pos, state);
+        Direction direction = state.get(FACING);
+        BlockPos blockPos = pos.offset(direction);
+        BlockState blockState = world.getBlockState(blockPos);
+        if (blockState.hasComparatorOutput()) {
+            i = blockState.getComparatorOutput(world, blockPos);
+        } else if (i < ImprovedRedstoneWireBlock.MaxStrength - 1 && blockState.isSolidBlock(world, blockPos)) {
+            blockPos = blockPos.offset(direction);
+            blockState = world.getBlockState(blockPos);
+            ItemFrameEntity itemFrameEntity = this.getAttachedItemFrame(world, direction, blockPos);
+            int j = Math.max(itemFrameEntity == null ? Integer.MIN_VALUE : itemFrameEntity.getComparatorPower(), blockState.hasComparatorOutput() ? blockState.getComparatorOutput(world, blockPos) : Integer.MIN_VALUE);
+            if (j != Integer.MIN_VALUE) {
+                i = j;
+            }
+        }
+
+        return i;
     }
 
     @Override

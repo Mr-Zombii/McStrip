@@ -16,3 +16,4 @@ accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lne
 accessible field net/minecraft/block/entity/BlockEntityType$Builder blocks Ljava/util/Set;
 accessible field net/minecraft/block/BlockSetType VALUES Ljava/util/Map;
 accessible field net/minecraft/block/PistonBlock sticky Z
+accessible method net/minecraft/block/ComparatorBlock getAttachedItemFrame (Lnet/minecraft/world/World;Lnet/minecraft/util/math/Direction;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/decoration/ItemFrameEntity;
