@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.dynamic_redstone.blocks;
+package me.zombii.mcstrip.improved_redstone.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;

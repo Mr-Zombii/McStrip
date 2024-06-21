@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.dynamic_redstone.blocks;
+package me.zombii.mcstrip.improved_redstone.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
@@ -7,14 +7,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-public class BigRedstoneBlock extends Block {
-    public static final MapCodec<BigRedstoneBlock> CODEC = createCodec(BigRedstoneBlock::new);
+public class ImprovedRedstoneBlock extends Block {
+    public static final MapCodec<ImprovedRedstoneBlock> CODEC = createCodec(ImprovedRedstoneBlock::new);
 
-    public MapCodec<BigRedstoneBlock> getCodec() {
+    public MapCodec<ImprovedRedstoneBlock> getCodec() {
         return CODEC;
     }
 
-    public BigRedstoneBlock(Settings settings) {
+    public ImprovedRedstoneBlock(Settings settings) {
         super(settings);
     }
 

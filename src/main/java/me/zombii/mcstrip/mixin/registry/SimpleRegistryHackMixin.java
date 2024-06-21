@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.registry;
 
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.SimpleRegistry;

@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.disablers;
 
 import net.minecraft.Bootstrap;
 import org.spongepowered.asm.mixin.Mixin;

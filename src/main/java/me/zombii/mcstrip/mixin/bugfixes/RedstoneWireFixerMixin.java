@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.bugfixes;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWireBlock;
@@ -37,19 +37,18 @@ public abstract class RedstoneWireFixerMixin {
 
     /**
      * @author Mr_Zombii
-     * @reason Fix A Redstone Crash
+     * @reason Fix power level being over 15 fixing an overflow crash
      */
     @Overwrite
     public static int getWireColor(int powerLevel) {
         if (powerLevel >= 15) powerLevel = 15;
         Vec3d vec3d = COLORS[powerLevel];
         return MathHelper.packRgb((float)vec3d.getX(), (float)vec3d.getY(), (float)vec3d.getZ());
-//        return MathHelper.packRgb(0, 0.541F, 1);
     }
 
     /**
      * @author Mr_Zombii
-     * @reason Fix A Redstone Crash
+     * @reason Fix a power level overflow crash with `int i` being over 15
      */
     @Overwrite
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
@@ -79,7 +78,7 @@ public abstract class RedstoneWireFixerMixin {
 
     /**
      * @author Mr_Zombii
-     * @reason Fix A Redstone Crash
+     * @reason forcing `int i` to be 15 to prevent power level related crashes from happening
      */
     @Overwrite
     private int getReceivedRedstonePower(World world, BlockPos pos) {

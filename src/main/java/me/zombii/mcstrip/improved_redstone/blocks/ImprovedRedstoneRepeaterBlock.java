@@ -1,6 +1,5 @@
 package me.zombii.mcstrip.improved_redstone.blocks;
 
-import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RepeaterBlock;

@@ -1,28 +1,15 @@
 package me.zombii.mcstrip.mixin.client;
 
-import java.util.function.Supplier;
-
 import net.minecraft.client.gui.screen.*;
 import net.minecraft.client.gui.widget.*;
 import net.minecraft.text.Text;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GameMenuScreen.class)
 public abstract class AdvancementButtonHiderMixin extends Screen {
-    @Shadow protected abstract ButtonWidget createButton(Text text, Supplier<Screen> screenSupplier);
-
-    @Shadow
-    static void addFeedbackAndBugsButtons(Screen parentScreen, GridWidget.Adder gridAdder) {
-    }
-
-    @Shadow @Nullable private ButtonWidget exitButton;
-
-    @Shadow protected abstract void disconnect();
 
     protected AdvancementButtonHiderMixin(Text title) {
         super(title);

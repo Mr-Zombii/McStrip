@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.disablers;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;

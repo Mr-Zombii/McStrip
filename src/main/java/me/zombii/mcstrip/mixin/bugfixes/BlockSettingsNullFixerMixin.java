@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.bugfixes;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

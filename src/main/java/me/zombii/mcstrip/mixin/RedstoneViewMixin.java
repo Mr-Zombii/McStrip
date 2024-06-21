@@ -1,6 +1,6 @@
 package me.zombii.mcstrip.mixin;
 
-import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
+import me.zombii.mcstrip.improved_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.RedstoneView;

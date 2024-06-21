@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.disablers;
 
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;

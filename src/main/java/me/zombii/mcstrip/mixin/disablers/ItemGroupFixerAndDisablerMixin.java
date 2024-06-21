@@ -1,6 +1,6 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.disablers;
 
-import me.zombii.mcstrip.McStrip;
+import me.zombii.mcstrip.improved_redstone.McStripItemGroups;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -30,7 +30,7 @@ public class ItemGroupFixerAndDisablerMixin {
 
     @Inject(method = "getDefaultTab", at = @At("HEAD"), cancellable = true)
     private static void getDefaultTab(CallbackInfoReturnable<ItemGroup> cir) {
-        cir.setReturnValue(Registries.ITEM_GROUP.getOrThrow(McStrip.REDSTONE_KEY));
+        cir.setReturnValue(Registries.ITEM_GROUP.getOrThrow(McStripItemGroups.REDSTONE_ITEMGROUP_KEY));
     }
 
 }

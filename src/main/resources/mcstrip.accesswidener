@@ -17,3 +17,6 @@ accessible field net/minecraft/block/entity/BlockEntityType$Builder blocks Ljava
 accessible field net/minecraft/block/BlockSetType VALUES Ljava/util/Map;
 accessible field net/minecraft/block/PistonBlock sticky Z
 accessible method net/minecraft/block/ComparatorBlock getAttachedItemFrame (Lnet/minecraft/world/World;Lnet/minecraft/util/math/Direction;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/decoration/ItemFrameEntity;
+accessible field net/minecraft/item/ItemGroups ITEM_SEARCH_TAB_TEXTURE_ID Lnet/minecraft/util/Identifier;
+accessible field net/minecraft/resource/ResourceFinder fileExtension Ljava/lang/String;
+accessible field net/minecraft/resource/ResourceFinder directoryName Ljava/lang/String;

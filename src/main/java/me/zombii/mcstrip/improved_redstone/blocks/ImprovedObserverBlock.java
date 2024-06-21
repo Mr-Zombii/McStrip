@@ -1,7 +1,6 @@
 package me.zombii.mcstrip.improved_redstone.blocks;
 
 import com.mojang.serialization.MapCodec;
-import me.zombii.mcstrip.dynamic_redstone.blocks.ImprovedRedstoneWireBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

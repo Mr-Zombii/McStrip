@@ -19,21 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(CreateWorldScreen.WorldTab.class)
 public abstract class GameRulesPresetMixin {
 
-    @Shadow @Final private static Text WORLD_TAB_TITLE_TEXT;
-
-    @Shadow @Final private static Text MAP_FEATURES_TEXT;
-
-    @Shadow @Final private static Text MAP_FEATURES_INFO_TEXT;
-
-    @Shadow @Final private static Text BONUS_ITEMS_TEXT;
-
-    @Shadow @Final private static Text AMPLIFIED_GENERATOR_INFO_TEXT;
-
-    @Mutable
-    @Shadow @Final private ButtonWidget customizeButton;
-
-    @Shadow protected abstract void openCustomizeScreen();
-
     @Mutable
     @Shadow @Final private TextFieldWidget seedField;
 

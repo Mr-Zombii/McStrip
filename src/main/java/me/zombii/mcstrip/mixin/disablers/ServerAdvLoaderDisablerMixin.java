@@ -1,4 +1,4 @@
-package me.zombii.mcstrip.mixin;
+package me.zombii.mcstrip.mixin.disablers;
 
 import com.google.gson.JsonElement;
 import net.minecraft.advancement.AdvancementManager;
