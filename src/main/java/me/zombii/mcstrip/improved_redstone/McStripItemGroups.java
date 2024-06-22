@@ -1,6 +1,9 @@
 package me.zombii.mcstrip.improved_redstone;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ContainerComponent;
+import net.minecraft.component.type.LoreComponent;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -9,6 +12,8 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static net.minecraft.item.ItemGroups.HOTBAR;
@@ -27,6 +32,7 @@ public class McStripItemGroups {
     public static final RegistryKey<ItemGroup> COLORED_WOOL_ITEMGROUP_KEY = register("colored_wool");
     public static final RegistryKey<ItemGroup> MULTIUSE_ITEMGROUP_TOOL_KEY = register("tools_category");
     public static final RegistryKey<ItemGroup> SLIMESTONE_ITEMGROUP_KEY = register("slime_stone");
+    public static final RegistryKey<ItemGroup> BARRELS_ITEMGROUP_KEY = register("barrels");
 
     static ItemGroup registerItemGroup(RegistryKey<ItemGroup> registryKey, ItemGroup.Builder group) {
         return Registry.register(Registries.ITEM_GROUP, registryKey, group.build());
@@ -187,13 +193,41 @@ public class McStripItemGroups {
         );
 
         registerItemGroup(
-                MULTIUSE_ITEMGROUP_TOOL_KEY,
+                BARRELS_ITEMGROUP_KEY,
                 makeItemgroup(
                         ItemGroup.Row.TOP, 5,
+                        "Barrel Values", Items.BARREL,
+                        ((displayContext, entries) -> {
+                            entries.add(addBarrel(0, 0), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(1, 1), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(2, 2), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(4, 3), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(6, 4), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(7, 5), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(9, 6), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(12, 7), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(14, 8), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(16, 9), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(18, 10), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(20, 11), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(22, 12), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(24, 13), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(26, 14), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                            entries.add(addBarrel(27, 15), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+                        })
+                )
+        );
+
+        registerItemGroup(
+                MULTIUSE_ITEMGROUP_TOOL_KEY,
+                makeItemgroup(
+                        ItemGroup.Row.TOP, 6,
                         "Extra Tools", Items.WOODEN_AXE,
                         ((displayContext, entries) -> {
                             entries.add(Items.WOODEN_AXE);
                             entries.add(Items.STICK);
+                            entries.add(Items.ELYTRA);
+                            entries.add(Items.FIREWORK_ROCKET);
                         })
                 )
         );
@@ -216,6 +250,17 @@ public class McStripItemGroups {
 
             entries.addAll(set);
         }).texture(ItemGroups.ITEM_SEARCH_TAB_TEXTURE_ID).special().type(ItemGroup.Type.SEARCH).build());
+    }
+
+    public static ItemStack addBarrel(int axeCount, int redstoneValue) {
+        ItemStack barrel = new ItemStack(Items.BARREL);
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int i = 0; i < axeCount; i++) {
+            stacks.add(Items.WOODEN_AXE.getDefaultStack());
+        }
+        barrel.set(DataComponentTypes.CONTAINER, ContainerComponent.fromStacks(stacks));
+        barrel.set(DataComponentTypes.CUSTOM_NAME, Text.of("Barrel of Value " + redstoneValue));
+        return barrel;
     }
 
 }

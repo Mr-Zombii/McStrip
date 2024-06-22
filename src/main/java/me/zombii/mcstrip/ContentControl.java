@@ -1,5 +1,8 @@
 package me.zombii.mcstrip;
 
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.item.ItemGroups;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,7 +136,9 @@ public class ContentControl {
                 "paper",
                 "compass",
                 "wooden_axe",
-                "redstone"
+                "redstone",
+                "elytra",
+                "firework_rocket"
         ));
 
         itemAllowListLoaded = true;
