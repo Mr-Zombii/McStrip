@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import me.zombii.mcstrip.improved_redstone.ImprovedBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.WireConnection;
 import net.minecraft.entity.player.PlayerEntity;
@@ -377,13 +378,15 @@ public class ImprovedRedstoneWireBlock extends Block {
     }
 
     protected static boolean connectsTo(BlockState state, @Nullable Direction dir) {
-        if (state.isOf(Blocks.REDSTONE_WIRE)) {
+        if (state.isOf(ImprovedBlocks.IMPROVED_REDSTONE) || state.isOf(Blocks.REDSTONE_WIRE)) {
             return true;
         } else if (state.isOf(Blocks.REPEATER)) {
             Direction direction = state.get(RepeaterBlock.FACING);
             return direction == dir || direction.getOpposite() == dir;
         } else if (state.isOf(Blocks.OBSERVER)) {
             return dir == state.get(ObserverBlock.FACING);
+        } else if (state.isOf(ImprovedBlocks.RGB_PANEL)) {
+            return dir == state.get(RGBPanel.FACING);
         } else {
             return state.emitsRedstonePower() && dir != null;
         }

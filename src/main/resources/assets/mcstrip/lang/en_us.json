@@ -4,5 +4,8 @@
   "block.mcstrip.improved_redstone_wall_torch": "Improved Redstone Wall Torch",
   "block.mcstrip.improved_repeater": "Improved Redstone Repeater",
   "block.mcstrip.improved_comparator": "Improved Comparator",
-  "block.mcstrip.improved_observer": "Improved Observer"
+  "block.mcstrip.improved_observer": "Improved Observer",
+  "item.mcstrip.improved_redstone": "Improved Redstone Dust",
+  "block.mcstrip.improved_redstone_block": "Improved Redstone Block",
+  "block.mcstrip.rgb_panel": "RGB color panel"
 }

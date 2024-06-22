@@ -34,6 +34,8 @@ public class ImprovedBlocks {
     public static Block IMPROVED_REDSTONE;
     public static Block IMPROVED_REDSTONE_BLOCK;
 
+    public static Block RGB_PANEL;
+
     static Block register(Identifier id, Block block) {
         return Registry.register(Registries.BLOCK, id, block);
     }
@@ -107,6 +109,16 @@ public class ImprovedBlocks {
                 ImprovedRedstoneBlock::new,
                 AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).requiresTool()
                         .strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).solidBlock(Blocks::never)
+        );
+
+        RGB_PANEL = register(
+                "rgb_panel",
+                RGBPanel::new,
+                AbstractBlock.Settings.create().nonOpaque().luminance((state) -> {
+                    if (!state.get(RGBPanel.LIT)) return 0;
+                    if (state.get(RGBPanel.POWER) != 0) return 15;
+                    return 0;
+                })
         );
     }
 

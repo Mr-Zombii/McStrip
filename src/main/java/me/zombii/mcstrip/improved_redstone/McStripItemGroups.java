@@ -87,6 +87,7 @@ public class McStripItemGroups {
                             entries.add(ImprovedItems.IMPROVED_REDSTONE_REPEATER);
                             entries.add(ImprovedItems.IMPROVED_REDSTONE_LAMP);
                             entries.add(ImprovedItems.IMPROVED_OBSERVER);
+                            entries.add(ImprovedItems.RGB_PANEL);
                         })
                 )
         );

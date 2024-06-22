@@ -21,6 +21,8 @@ public class ImprovedItems {
     public static Item IMPROVED_REDSTONE;
     public static Item IMPROVED_REDSTONE_BLOCK;
 
+    public static Item RGB_PANEL;
+
     public static void registerItems() {
         ImprovedItems.IMPROVED_REDSTONE_REPEATER = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_REPEATER);
         ImprovedItems.IMPROVED_REDSTONE_COMPARATOR = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR);
@@ -42,6 +44,8 @@ public class ImprovedItems {
                 )
         );
         ImprovedItems.IMPROVED_REDSTONE_BLOCK = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_BLOCK);
+
+        ImprovedItems.RGB_PANEL = Items.register(ImprovedBlocks.RGB_PANEL);
     }
 
 }
