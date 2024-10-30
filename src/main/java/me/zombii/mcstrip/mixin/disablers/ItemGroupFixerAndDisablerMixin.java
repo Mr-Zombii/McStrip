@@ -30,7 +30,7 @@ public class ItemGroupFixerAndDisablerMixin {
 
     @Inject(method = "getDefaultTab", at = @At("HEAD"), cancellable = true)
     private static void getDefaultTab(CallbackInfoReturnable<ItemGroup> cir) {
-        cir.setReturnValue(Registries.ITEM_GROUP.getOrThrow(McStripItemGroups.REDSTONE_ITEMGROUP_KEY));
+        cir.setReturnValue(Registries.ITEM_GROUP.getOrThrow(McStripItemGroups.MULTIUSE_ITEMGROUP_TOOL_KEY));
     }
 
 }

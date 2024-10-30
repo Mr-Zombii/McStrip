@@ -52,68 +52,6 @@ public class McStripItemGroups {
 
     public static void registerItemGroups() {
         registerItemGroup(
-                REDSTONE_ITEMGROUP_KEY,
-                makeItemgroup(
-                        ItemGroup.Row.TOP, 0,
-                        "Redstone Components", Items.REDSTONE,
-                        ((displayContext, entries) -> {
-                            entries.add(Items.REDSTONE);
-                            entries.add(Items.REPEATER);
-                            entries.add(Items.COMPARATOR);
-
-                            entries.add(Items.REDSTONE_TORCH);
-                            entries.add(Items.REDSTONE_BLOCK);
-
-                            entries.add(Items.REDSTONE_LAMP);
-                            entries.add(Items.WAXED_COPPER_BULB);
-
-                            entries.add(Items.IRON_TRAPDOOR);
-                            entries.add(Items.OAK_TRAPDOOR);
-
-                            entries.add(Items.STONE_BUTTON);
-                            entries.add(Items.OAK_BUTTON);
-
-                            entries.add(Items.LEVER);
-                            entries.add(Items.TARGET);
-                            entries.add(Items.BARREL);
-                        })
-                )
-        );
-
-        registerItemGroup(
-                BETTER_REDSTONE_ITEMGROUP_KEY,
-                makeItemgroup(
-                        ItemGroup.Row.TOP, 1,
-                        "Improved Redstone Components", ImprovedItems.IMPROVED_REDSTONE,
-                        ((displayContext, entries) -> {
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE);
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE_BLOCK);
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE_TORCH);
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE_COMPARATOR);
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE_REPEATER);
-                            entries.add(ImprovedItems.IMPROVED_REDSTONE_LAMP);
-                            entries.add(ImprovedItems.IMPROVED_OBSERVER);
-                            entries.add(ImprovedItems.RGB_PANEL);
-                        })
-                )
-        );
-
-        registerItemGroup(
-                SLIMESTONE_ITEMGROUP_KEY,
-                makeItemgroup(
-                        ItemGroup.Row.TOP, 2,
-                        "Slimestone Components", Items.SLIME_BLOCK,
-                        ((displayContext, entries) -> {
-                            entries.add(Items.SLIME_BLOCK);
-                            entries.add(Items.PISTON);
-                            entries.add(Items.STICKY_PISTON);
-                            entries.add(Items.OBSERVER);
-                            entries.add(Items.OBSIDIAN);
-                        })
-                )
-        );
-
-        registerItemGroup(
                 CONCRETE_ITEMGROUP_KEY,
                 makeItemgroup(
                         ItemGroup.Row.TOP, 3,
@@ -233,10 +171,6 @@ public class McStripItemGroups {
         );
 
         // Tabs required by the base game
-        Registry.register(Registries.ITEM_GROUP, HOTBAR, ItemGroup.create(ItemGroup.Row.BOTTOM, 5).displayName(Text.translatable("itemGroup.hotbar")).icon(() -> {
-            return new ItemStack(Blocks.BOOKSHELF);
-        }).special().type(ItemGroup.Type.HOTBAR).build());
-
         Registry.register(Registries.ITEM_GROUP, SEARCH, ItemGroup.create(ItemGroup.Row.TOP, 6).displayName(Text.translatable("itemGroup.search")).icon(() -> {
             return new ItemStack(Items.COMPASS);
         }).entries((displayContext, entries) -> {

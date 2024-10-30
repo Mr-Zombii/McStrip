@@ -19,7 +19,8 @@
     "registry.BlockGateMixin",
     "registry.ItemGateMixin",
     "registry.RegistryLoaderFloodgateMixin",
-    "registry.SimpleRegistryHackMixin"
+    "registry.SimpleRegistryHackMixin",
+    "registry.YGradient"
   ],
   "injectors": {
     "defaultRequire": 1

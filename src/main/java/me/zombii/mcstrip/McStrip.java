@@ -5,6 +5,8 @@ import me.zombii.mcstrip.improved_redstone.ImprovedItems;
 import me.zombii.mcstrip.improved_redstone.McStripItemGroups;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Models;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

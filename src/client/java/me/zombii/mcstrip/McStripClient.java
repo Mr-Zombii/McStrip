@@ -6,6 +6,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.texture.atlas.AtlasLoader;
 
 import static me.zombii.mcstrip.improved_redstone.ImprovedBlocks.IMPROVED_REDSTONE;
 
@@ -24,7 +25,6 @@ public class McStripClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ImprovedBlocks.IMPROVED_REDSTONE_TORCH, layer);
 		BlockRenderLayerMap.INSTANCE.putBlock(ImprovedBlocks.IMPROVED_REDSTONE, layer);
 	}
-
 	void setupColorProviders() {
 		ColorProviderRegistry.BLOCK.register(ImprovedRedstoneWireBlock::getBlockColor, IMPROVED_REDSTONE);
 	}

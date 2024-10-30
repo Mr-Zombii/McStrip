@@ -26,7 +26,7 @@ public class RegistryLoaderFloodgateMixin {
     private static void foreach(List instance, Consumer consumer) {}
 
     @Redirect(method = "loadFromResource(Lnet/minecraft/resource/ResourceManager;Lnet/minecraft/registry/RegistryOps$RegistryInfoGetter;Lnet/minecraft/registry/MutableRegistry;Lcom/mojang/serialization/Decoder;Ljava/util/Map;)V", at=@At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceFinder;findResources(Lnet/minecraft/resource/ResourceManager;)Ljava/util/Map;"))
-    private static Map<Identifier, Resource> init(ResourceFinder instance, ResourceManager resourceManager) {
+    private static Map<Identifier, Resource> loadFromResource(ResourceFinder instance, ResourceManager resourceManager) {
 
         Map<Identifier, Resource> resources = new HashMap<>();
         Map<Identifier, Resource> oldResources =
@@ -39,7 +39,7 @@ public class RegistryLoaderFloodgateMixin {
             if (
                     ContentControl.resourceController(id.getNamespace(), id.getPath())
             ) {
-                resources.put(id, oldResources.get(id));
+                resources.put(id, oldResources.get(ContentControl.redirect(id)));
             }
         });
 

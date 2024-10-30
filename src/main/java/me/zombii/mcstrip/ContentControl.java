@@ -2,9 +2,12 @@ package me.zombii.mcstrip;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ContentControl {
 
@@ -18,6 +21,24 @@ public class ContentControl {
     static void addToCommonList(String... entrys) {
         itemAllowList.addAll(List.of(entrys));
         blockAllowList.addAll(List.of(entrys));
+    }
+
+    public static Map<Identifier, Identifier> redirections = new HashMap<>();
+
+    static {
+        redirections.put(
+                Identifier.of("minecraft:worldgen/density_function/y.json"),
+                Identifier.of("mcstrip:worldgen/density_function/y.json")
+        );
+    }
+
+    public static Identifier redirect(Identifier old) {
+        if (redirections.containsKey(old)) {
+            System.out.println("Loading Redirect " + old + " -> " + redirections.get(old));
+            return redirections.get(old);
+        }
+        System.out.println("Loading Old -> " + old);
+        return old;
     }
 
     public static void initCommonAllowList() {
